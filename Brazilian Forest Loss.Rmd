@@ -1,0 +1,55 @@
+---
+title: "Brazilian Forest Loss"
+author: "Jesús Pérez"
+date: "4/9/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Deforestation
+
+Deforestation is the permanent removal of trees to make room for something besides forest. This can include clearing the land for agriculture or grazing, or using the timber for fuel, construction or manufacturing.  
+
+``` {r image, echo = FALSE, fig.align='center'}
+knitr::include_graphics("./desmatamento.jpeg")
+```
+
+According to [Our World Data](https://ourworldindata.org/forest-area) Forests account for a little over **one-third (38%) of habitable land area**. This is around one-quarter (26%) of total (both habitable and uninhabitable) land area.  
+
+>Global forest area has reduced significantly due to the expansion of agriculture. Today half of global habitable land is used for farming. The area used for livestock farming in particular is equal in area to the world’s forests.  
+
+## Cause of deforestation
+
+Often, deforestation occurs when forested area is cut and cleared to make way for agriculture or grazing. The Union of Concerned Scientists (UCS) reports that just four commodities are responsible for tropical deforestation: beef, soy, palm oil and wood products. UCS estimates that an area the size of Switzerland (14,800 square miles, or 38,300 square km) is lost to deforestation every year. 
+
+Natural fires in tropical forests tend to be rare but intense. Human-lit fires are commonly used to clear land for agricultural use. First, valuable timber is harvested, then the remaining vegetation is burned to make way for crops like soy or cattle grazing.
+
+## The case of Brazil
+
+Brazil has the biggest tropical rainforest in the world. Brazil once had the highest deforestation rate in the world and in 2005 still had the largest area of forest removed annually. Since 1970, over 700,000 square kilometres (270,000 sq mi) of the Amazon rainforest have been destroyed. In 2012, the Amazon was approximately 5,400,000 square kilometres (2,100,000 sq mi), which is only 87% of the Amazon's original size.  
+
+# App use
+
+The data used in this app is part of **TidyTuesday** community, avalilable on [link](https://github.com/rfordatascience/tidytuesday/tree/master/data/2021/2021-04-06). The dataset shows loss of Brazilian forest due to specific types from 2001 to 2013.  
+
+The app allows user to select a **date range** using a *slider* and choose a **cause of deforestation** among five options using a *dropdown menu*. 
+
+The app will display a **interactive graph** showing the area lost in that specific period of time and also a **text box** showing the accumaltive area.
+
+``` {r app, echo = FALSE, fig.align='center'}
+knitr::include_graphics("./Capture.jpg")
+```
+
+# References
+
+
+[1 - Our World Data](https://ourworldindata.org/forest-area)
+
+[2 - TidyTuesday](https://github.com/rfordatascience/tidytuesday/tree/master/data/2021/2021-04-06)
+
+
+
+
