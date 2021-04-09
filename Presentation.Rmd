@@ -1,0 +1,74 @@
+---
+title: "Brazilian Forest Loss"
+author: "Jesús Pérez"
+date: "4/9/2021"
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(shiny)
+library(ggplot2)
+library(tidyverse)
+```
+
+## Showing Deforestation using shiny
+
+<font size="3">This presentation shows **myApp**, and application created using **R** and **Shiny**.</font>
+
+``` {r image, echo = FALSE, out.width="60%", fig.align='center'}
+knitr::include_graphics("./desmatamento.jpeg")
+```
+
+<font size="4">The apps shows Brazilian forest loss due to several factors from 2001 to 2013. All the supporting documentations can be seen in:</font>
+
+- <font size="3"> [myApp](https://jepg24.shinyapps.io/myApp/?_ga=2.26944573.1003648615.1617944919-468954181.1617944919)</font>
+- <font size="3"> [code](https://github.com/jepg24/Brazilian-Forest-Loss/tree/main/myApp)</font>
+- <font size="3"> [Documentation](https://rpubs.com/jepg24/751831)</font>
+
+## Data
+
+<font size="4"> The data used in this app is part of **TidyTuesday** community, avalilable on [link](https://github.com/rfordatascience/tidytuesday/tree/master/data/2021/2021-04-06). The dataset shows loss of Brazilian forest due to specific types from 2001 to 2013.</font>
+
+```{r open data, echo=TRUE}
+br <- read.csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-04-06/brazil_loss.csv')
+```
+
+<font size="4"> The selection of the **variable** and **date range** is made by reactivity (see code).
+
+For example, selecting **Commercial crops** and a range **from 2001-2006** display the following results.</font>
+
+```{r chunk, echo = TRUE}
+range <- c(2001, 2006)     # In the app = input$range
+var <- "commercial_crops"  # In the app = input$var
+```
+
+
+## Results
+
+<font size="4"> The results calculated are a numeric value and a graph.  
+The results are calculated as:</font>
+
+```{r area, message=FALSE, warning=FALSE, echo = TRUE}
+x <- br %>% select(year, var)
+x <- x[x$year %in% seq(from = min(range), to = max(range), by = 1), ] 
+sum(x[,2])
+```
+
+``` {r graph, message=FALSE, warning=FALSE, echo = TRUE}
+g <- x %>% ggplot(aes(.[[1]],.[[2]])) + 
+            geom_point(size=3, color="#69b3a2") + 
+            geom_area(fill="#69b3a2", alpha=0.4) +
+            geom_line(color="#69b3a2", size=2) +
+            labs(x="Time period", y = "Forest loss (in Ha)") +
+            theme(axis.text=element_text(size=12), axis.title=element_text(size=14)) +
+            ggtitle("Loss by period")
+```
+
+## Graph
+
+```{r plot, message=FALSE, warning=FALSE, echo = TRUE}
+print(g)
+```
+
+
