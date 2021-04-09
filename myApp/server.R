@@ -2,10 +2,8 @@ library(shiny)
 library(ggplot2)
 library(tidyverse)
 
-# Define server logic required to draw a histogram
 shinyServer(function(input, output) {
 
-    # Load the data    
     br <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-04-06/brazil_loss.csv')
     
     value <- reactive({
